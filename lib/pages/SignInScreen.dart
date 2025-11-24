@@ -43,7 +43,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     ],
                   ),
                   child: const Icon(
-                    Icons.shopping_cart_outlined,
+                    Icons.shopping_bag,
                     size: 40,
                     color: AppColors.white,
                   ),

@@ -8,6 +8,7 @@ import 'package:madpractical/pages/CategoriesScreen.dart';
 import 'package:madpractical/pages/WishlistScreen.dart';
 import 'package:madpractical/pages/ProfileScreen.dart';
 import 'package:madpractical/pages/SplashScreen.dart';
+import 'package:madpractical/constants/app_colors.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,7 +20,31 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'ShopHub - Your Shopping Destination',
       debugShowCheckedModeBanner: false,
+      // Theme Configuration
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primaryColor: AppColors.primary,
+        scaffoldBackgroundColor: AppColors.background,
+        cardColor: AppColors.cards,
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(color: AppColors.text),
+          bodyMedium: TextStyle(color: AppColors.secondaryText),
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: AppColors.background,
+          foregroundColor: AppColors.text,
+          elevation: 0,
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: AppColors.buttons,
+            foregroundColor: AppColors.white,
+          ),
+        ),
+      ),
+      themeMode: ThemeMode.light, // Use light theme for now
       // Start on a splash screen which will redirect to sign in
       initialRoute: '/splash',
       routes: {

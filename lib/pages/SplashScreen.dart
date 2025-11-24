@@ -47,14 +47,14 @@ class _SplashScreenState extends State<SplashScreen> {
                   ],
                 ),
                 child: const Icon(
-                  Icons.shopping_cart_outlined,
+                  Icons.shopping_bag,
                   size: 80,
                   color: AppColors.primary,
                 ),
               ),
               const SizedBox(height: 30),
               const Text(
-                'MadPractical',
+                'ShopHub',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -64,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
               const SizedBox(height: 8),
               Text(
-                'Your Shopping Companion',
+                'Your Shopping Destination',
                 style: TextStyle(
                   fontSize: 16,
                   color: AppColors.white.withOpacity(0.8),

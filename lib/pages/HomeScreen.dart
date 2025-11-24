@@ -13,9 +13,9 @@ class _HomeScreenState extends State<HomeScreen> {
   String selectedCategory = 'All';
   final List<Map<String, dynamic>> categories = [
     {'icon': Icons.grid_view, 'title': 'All'},
-    {'icon': Icons.checkroom, 'title': 'Clothes'},
-    {'icon': Icons.shopping_bag, 'title': 'Shoes'},
     {'icon': Icons.devices, 'title': 'Electronics'},
+    {'icon': Icons.checkroom, 'title': 'Fashion'},
+    {'icon': Icons.home, 'title': 'Home'},
     {'icon': Icons.sports_soccer, 'title': 'Sports'},
   ];
 
@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     {
       'name': 'Wireless Headphones',
       'price': 'UGX 85,000',
-      'rating': 4.5,
+      'rating': 4.8,
       'discount': '-20%',
       'category': 'Electronics',
       'image': 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop',
@@ -32,65 +32,65 @@ class _HomeScreenState extends State<HomeScreen> {
     {
       'name': 'Smart Watch',
       'price': 'UGX 120,000',
-      'rating': 4.8,
+      'rating': 4.6,
       'discount': '-15%',
       'category': 'Electronics',
       'image': 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop',
       'description': 'Advanced smartwatch with fitness tracking and health monitoring features.',
     },
     {
-      'name': 'Running Shoes',
-      'price': 'UGX 95,000',
-      'rating': 4.3,
+      'name': 'Designer T-Shirt',
+      'price': 'UGX 45,000',
+      'rating': 4.9,
       'discount': '-25%',
-      'category': 'Shoes',
-      'image': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
-      'description': 'Comfortable running shoes with excellent cushioning and breathable material.',
-    },
-    {
-      'name': 'Casual T-Shirt',
-      'price': 'UGX 35,000',
-      'rating': 4.2,
-      'discount': '-30%',
-      'category': 'Clothes',
+      'category': 'Fashion',
       'image': 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
-      'description': 'Soft cotton t-shirt perfect for casual wear and everyday comfort.',
+      'description': 'Premium cotton t-shirt with modern design and comfortable fit.',
     },
     {
-      'name': 'Sports Jersey',
-      'price': 'UGX 55,000',
-      'rating': 4.1,
-      'discount': '-15%',
-      'category': 'Sports',
-      'image': 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=400&fit=crop',
-      'description': 'High-quality sports jersey with moisture-wicking fabric.',
+      'name': 'Coffee Maker',
+      'price': 'UGX 95,000',
+      'rating': 4.7,
+      'discount': '-18%',
+      'category': 'Home',
+      'image': 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=400&fit=crop',
+      'description': 'Automatic coffee maker with programmable settings and thermal carafe.',
     },
     {
-      'name': 'Casual Sneakers',
+      'name': 'Running Shoes',
       'price': 'UGX 75,000',
-      'rating': 4.4,
-      'discount': '-20%',
-      'category': 'Shoes',
-      'image': 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop',
-      'description': 'Comfortable casual sneakers perfect for everyday wear.',
+      'rating': 4.5,
+      'discount': '-30%',
+      'category': 'Sports',
+      'image': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
+      'description': 'Lightweight running shoes with excellent cushioning and breathable material.',
     },
     {
       'name': 'Bluetooth Speaker',
-      'price': 'UGX 45,000',
-      'rating': 4.4,
-      'discount': '-35%',
+      'price': 'UGX 42,000',
+      'rating': 4.8,
+      'discount': '-22%',
       'category': 'Electronics',
       'image': 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=400&fit=crop',
       'description': 'Portable Bluetooth speaker with rich bass and long battery life.',
     },
     {
-      'name': 'Denim Jacket',
-      'price': 'UGX 85,000',
-      'rating': 4.3,
-      'discount': '-25%',
-      'category': 'Clothes',
-      'image': 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop',
-      'description': 'Classic denim jacket with modern fit and premium quality.',
+      'name': 'Table Lamp',
+      'price': 'UGX 35,000',
+      'rating': 4.6,
+      'discount': '-12%',
+      'category': 'Home',
+      'image': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
+      'description': 'Modern LED table lamp with adjustable brightness and USB charging port.',
+    },
+    {
+      'name': 'Yoga Mat',
+      'price': 'UGX 25,000',
+      'rating': 4.4,
+      'discount': '-28%',
+      'category': 'Sports',
+      'image': 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=400&fit=crop',
+      'description': 'Non-slip yoga mat with extra cushioning for comfortable workouts.',
     },
   ];
 
@@ -105,19 +105,120 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: AppColors.white,
-        title: const Text(
-          'Welcome, User',
-          style: TextStyle(color: AppColors.black, fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.notifications_none, color: AppColors.black),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(70),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: AppColors.backgroundGradient,
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.primary.withOpacity(0.1),
+                blurRadius: 10,
+                offset: const Offset(0, 2),
+              ),
+            ],
           ),
-        ],
+          child: AppBar(
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            title: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    gradient: AppColors.primaryGradient,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.primary.withOpacity(0.3),
+                        blurRadius: 8,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: const Icon(
+                    Icons.shopping_bag,
+                    color: AppColors.white,
+                    size: 20,
+                  ),
+                ),
+                const SizedBox(width: 12),
+                const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text(
+                      'ShopHub',
+                      style: TextStyle(
+                        color: AppColors.text,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                    const Text(
+                      'Your Shopping Destination',
+                      style: TextStyle(
+                        color: AppColors.secondaryText,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            actions: [
+              Container(
+                margin: const EdgeInsets.only(right: 8),
+                decoration: BoxDecoration(
+                  color: AppColors.cards(context),
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.primary(context).withOpacity(0.1),
+                      blurRadius: 6,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: IconButton(
+                  onPressed: () {
+                    // Toggle theme (this would need state management in a real app)
+                  },
+                  icon: Icon(
+                    Theme.of(context).brightness == Brightness.dark 
+                        ? Icons.light_mode 
+                        : Icons.dark_mode,
+                    color: AppColors.primary(context),
+                    size: 20,
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(right: 16),
+                decoration: BoxDecoration(
+                  color: AppColors.cards(context),
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.primary(context).withOpacity(0.1),
+                      blurRadius: 6,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.notifications_none,
+                    color: AppColors.primary(context),
+                    size: 22,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -127,34 +228,67 @@ class _HomeScreenState extends State<HomeScreen> {
             // Search Bar
             Container(
               decoration: BoxDecoration(
-                color: AppColors.white,
-                borderRadius: BorderRadius.circular(12),
+                gradient: LinearGradient(
+                  colors: [
+                    AppColors.white,
+                    AppColors.background.withOpacity(0.5),
+                  ],
+                ),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(
+                  color: AppColors.secondary.withOpacity(0.2),
+                  width: 1,
+                ),
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.primary.withOpacity(0.1),
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
+                    color: AppColors.primary.withOpacity(0.08),
+                    blurRadius: 12,
+                    offset: const Offset(0, 4),
                   ),
                 ],
               ),
               child: Row(
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
-                    child: Icon(Icons.search, color: AppColors.grey),
+                  Container(
+                    margin: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      gradient: AppColors.primaryGradient,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Icon(
+                      Icons.search,
+                      color: AppColors.white,
+                      size: 18,
+                    ),
                   ),
                   const Expanded(
                     child: TextField(
                       decoration: InputDecoration(
-                        hintText: 'Search for Product',
-                        hintStyle: TextStyle(color: AppColors.grey),
+                        hintText: 'Search products...',
+                        hintStyle: TextStyle(
+                          color: AppColors.grey,
+                          fontSize: 14,
+                        ),
                         border: InputBorder.none,
+                        contentPadding: EdgeInsets.symmetric(vertical: 16),
                       ),
                     ),
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.filter_list, color: AppColors.primary),
-                    onPressed: () {},
+                  Container(
+                    margin: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: AppColors.secondary.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.tune,
+                        color: AppColors.secondary,
+                        size: 18,
+                      ),
+                      onPressed: () {},
+                    ),
                   ),
                 ],
               ),
@@ -163,20 +297,20 @@ class _HomeScreenState extends State<HomeScreen> {
 
             // Popular Categories
             const Text(
-              'Popular Categories',
+              'Categories',
               style: TextStyle(
                 fontSize: 18, 
                 fontWeight: FontWeight.bold,
                 color: AppColors.black,
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 12),
             SizedBox(
-              height: 86,
+              height: 65,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
-                separatorBuilder: (_, __) => const SizedBox(width: 12),
+                separatorBuilder: (_, __) => const SizedBox(width: 8),
                 itemBuilder: (context, index) {
                   final category = categories[index];
                   final isSelected = selectedCategory == category['title'];
@@ -187,23 +321,31 @@ class _HomeScreenState extends State<HomeScreen> {
                         selectedCategory = category['title'];
                       });
                     },
-                    child: Container(
-                      width: 100,
-                      padding: const EdgeInsets.all(8),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
+                      width: 75,
+                      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
                       decoration: BoxDecoration(
-                        color: isSelected ? AppColors.primary : AppColors.white,
-                        borderRadius: BorderRadius.circular(12),
+                        gradient: isSelected 
+                            ? AppColors.primaryGradient
+                            : LinearGradient(
+                                colors: [
+                                  AppColors.white,
+                                  AppColors.background.withOpacity(0.8),
+                                ],
+                              ),
+                        borderRadius: BorderRadius.circular(16),
                         border: Border.all(
-                          color: isSelected ? AppColors.primary : AppColors.lightGrey,
-                          width: isSelected ? 2 : 1,
+                          color: isSelected ? AppColors.secondary : AppColors.lightGrey.withOpacity(0.5),
+                          width: isSelected ? 1.5 : 1,
                         ),
                         boxShadow: [
                           BoxShadow(
                             color: isSelected 
-                                ? AppColors.primary.withOpacity(0.3)
-                                : AppColors.black.withOpacity(0.1),
-                            blurRadius: 8,
-                            offset: const Offset(0, 4),
+                                ? AppColors.secondary.withOpacity(0.4)
+                                : AppColors.grey.withOpacity(0.1),
+                            blurRadius: isSelected ? 12 : 6,
+                            offset: const Offset(0, 3),
                           ),
                         ],
                       ),
@@ -211,37 +353,36 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            width: 40,
-                            height: 40,
+                            width: 28,
+                            height: 28,
                             decoration: BoxDecoration(
-                              gradient: isSelected 
-                                  ? const LinearGradient(
-                                      colors: [AppColors.white, AppColors.white],
-                                    )
-                                  : AppColors.primaryGradient,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
+                              color: isSelected 
+                                  ? AppColors.white.withOpacity(0.9)
+                                  : AppColors.secondary.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(14),
+                              boxShadow: isSelected ? [
                                 BoxShadow(
-                                  color: AppColors.primary.withOpacity(0.2),
-                                  blurRadius: 6,
-                                  offset: const Offset(0, 2),
+                                  color: AppColors.white.withOpacity(0.3),
+                                  blurRadius: 4,
+                                  offset: const Offset(0, 1),
                                 ),
-                              ],
+                              ] : null,
                             ),
                             child: Icon(
                               category['icon'],
-                              color: isSelected ? AppColors.primary : AppColors.white,
-                              size: 20,
+                              color: isSelected ? AppColors.primary : AppColors.secondary,
+                              size: 16,
                             ),
                           ),
-                          const SizedBox(height: 8),
+                          const SizedBox(height: 6),
                           Text(
                             category['title'],
                             style: TextStyle(
-                              fontSize: 12,
-                              color: isSelected ? AppColors.white : AppColors.black,
-                              fontWeight: FontWeight.w500,
+                              fontSize: 10,
+                              color: isSelected ? AppColors.white : AppColors.black.withOpacity(0.8),
+                              fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
                             ),
+                            textAlign: TextAlign.center,
                           ),
                         ],
                       ),
@@ -309,7 +450,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'Special Offer',
+                            'Special Offers',
                             style: TextStyle(
                               color: AppColors.white,
                               fontSize: 24,
@@ -318,7 +459,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           const SizedBox(height: 8),
                           const Text(
-                            'Up to 50% OFF',
+                            'Up to 50% Off Selected Items',
                             style: TextStyle(
                               color: AppColors.white,
                               fontSize: 16,
@@ -334,7 +475,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: const Text(
                               'Shop Now',
                               style: TextStyle(
-                                color: AppColors.black,
+                                color: AppColors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 12,
                               ),
@@ -405,13 +546,29 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(12),
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          AppColors.white,
+                          AppColors.background.withOpacity(0.3),
+                        ],
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        color: AppColors.secondary.withOpacity(0.1),
+                        width: 1,
+                      ),
                       boxShadow: [
                         BoxShadow(
-                          color: AppColors.primary.withOpacity(0.1),
-                          blurRadius: 12,
-                          offset: const Offset(0, 4),
+                          color: AppColors.primary.withOpacity(0.08),
+                          blurRadius: 15,
+                          offset: const Offset(0, 5),
+                        ),
+                        BoxShadow(
+                          color: AppColors.secondary.withOpacity(0.05),
+                          blurRadius: 8,
+                          offset: const Offset(0, 2),
                         ),
                       ],
                     ),
@@ -425,15 +582,20 @@ class _HomeScreenState extends State<HomeScreen> {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(12),
-                                  topRight: Radius.circular(12),
+                                  topLeft: Radius.circular(16),
+                                  topRight: Radius.circular(16),
                                 ),
-                                color: Colors.grey[300],
+                                gradient: LinearGradient(
+                                  colors: [
+                                    AppColors.background.withOpacity(0.3),
+                                    AppColors.secondary.withOpacity(0.1),
+                                  ],
+                                ),
                               ),
                               child: ClipRRect(
                                 borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(12),
-                                  topRight: Radius.circular(12),
+                                  topLeft: Radius.circular(16),
+                                  topRight: Radius.circular(16),
                                 ),
                                 child: Image.network(
                                   product['image'],
@@ -465,13 +627,25 @@ class _HomeScreenState extends State<HomeScreen> {
                                   vertical: 2,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: AppColors.accent,
-                                  borderRadius: BorderRadius.circular(6),
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      AppColors.secondary,
+                                      AppColors.secondary.withOpacity(0.8),
+                                    ],
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: AppColors.secondary.withOpacity(0.3),
+                                      blurRadius: 4,
+                                      offset: const Offset(0, 2),
+                                    ),
+                                  ],
                                 ),
                                 child: Text(
                                   product['discount'],
                                   style: const TextStyle(
-                                    color: AppColors.black,
+                                    color: AppColors.white,
                                     fontSize: 12,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -640,7 +814,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   Navigator.pushNamed(context, '/cart');
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primary,
+                  backgroundColor: AppColors.accent,
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
