@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:madpractical/constants/app_colors.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -16,16 +17,8 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Colors.blue.shade50,
-              Colors.white,
-              Colors.white,
-            ],
-          ),
+        decoration: const BoxDecoration(
+          gradient: AppColors.backgroundGradient,
         ),
         child: SafeArea(
           child: SingleChildScrollView(
@@ -39,11 +32,11 @@ class _SignInScreenState extends State<SignInScreen> {
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: Colors.blue.shade600,
+                    color: AppColors.primary,
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.blue.withOpacity(0.3),
+                        color: AppColors.primary.withOpacity(0.3),
                         blurRadius: 15,
                         offset: const Offset(0, 8),
                       ),
@@ -52,7 +45,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   child: const Icon(
                     Icons.shopping_cart_outlined,
                     size: 40,
-                    color: Colors.white,
+                    color: AppColors.white,
                   ),
                 ),
                 const SizedBox(height: 30),
@@ -60,7 +53,11 @@ class _SignInScreenState extends State<SignInScreen> {
                 // Title
               const Text(
                 "Welcome Back",
-                style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 26, 
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.black,
+                ),
               ),
 
               const SizedBox(height: 8),
@@ -68,7 +65,7 @@ class _SignInScreenState extends State<SignInScreen> {
               const Text(
                 "Log in by entering your\nemail address and password",
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 15, color: Colors.black54),
+                style: TextStyle(fontSize: 15, color: AppColors.grey),
               ),
 
               const SizedBox(height: 32),
@@ -78,7 +75,11 @@ class _SignInScreenState extends State<SignInScreen> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "Email Address",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                    fontSize: 14, 
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.black,
+                  ),
                 ),
               ),
               const SizedBox(height: 6),
@@ -87,11 +88,19 @@ class _SignInScreenState extends State<SignInScreen> {
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.email_outlined),
+                  prefixIcon: const Icon(Icons.email_outlined, color: AppColors.primary),
                   hintText: "Enter your email address",
+                  hintStyle: const TextStyle(color: AppColors.grey),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: AppColors.lightGrey),
                   ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: AppColors.primary, width: 2),
+                  ),
+                  filled: true,
+                  fillColor: AppColors.white,
                 ),
               ),
 
@@ -102,7 +111,11 @@ class _SignInScreenState extends State<SignInScreen> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "Password",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                    fontSize: 14, 
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.black,
+                  ),
                 ),
               ),
               const SizedBox(height: 6),
@@ -111,16 +124,25 @@ class _SignInScreenState extends State<SignInScreen> {
                 controller: _passwordController,
                 obscureText: _obscurePassword,
                 decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.lock_outline),
+                  prefixIcon: const Icon(Icons.lock_outline, color: AppColors.primary),
                   hintText: "Enter your password",
+                  hintStyle: const TextStyle(color: AppColors.grey),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: AppColors.lightGrey),
                   ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: AppColors.primary, width: 2),
+                  ),
+                  filled: true,
+                  fillColor: AppColors.white,
                   suffixIcon: IconButton(
                     icon: Icon(
                       _obscurePassword
                           ? Icons.visibility_off
                           : Icons.visibility,
+                      color: AppColors.grey,
                     ),
                     onPressed: () {
                       setState(() {
@@ -142,7 +164,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     "Forgot Password?",
                     style: TextStyle(
                       decoration: TextDecoration.underline,
-                      color: Colors.black87,
+                      color: AppColors.primary,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
@@ -159,14 +182,19 @@ class _SignInScreenState extends State<SignInScreen> {
                     Navigator.pushNamed(context, '/home');
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
+                    backgroundColor: AppColors.primary,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(12),
                     ),
+                    elevation: 4,
                   ),
                   child: const Text(
                     "Log In",
-                    style: TextStyle(fontSize: 16, color: Colors.white),
+                    style: TextStyle(
+                      fontSize: 16, 
+                      color: AppColors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
@@ -195,10 +223,11 @@ class _SignInScreenState extends State<SignInScreen> {
                 child: OutlinedButton(
                   onPressed: () {},
                   style: OutlinedButton.styleFrom(
-                    side: const BorderSide(width: 1.4),
+                    side: const BorderSide(color: AppColors.primary, width: 1.5),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(12),
                     ),
+                    backgroundColor: AppColors.white,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -213,6 +242,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
+                          color: AppColors.black,
                         ),
                       ),
                     ],
@@ -236,6 +266,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         decoration: TextDecoration.underline,
+                        color: AppColors.primary,
                       ),
                     ),
                   ),

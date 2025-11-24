@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:madpractical/constants/app_colors.dart';
 
 class AppBottomNavigation extends StatelessWidget {
   final int currentIndex;
@@ -14,13 +15,13 @@ class AppBottomNavigation extends StatelessWidget {
       child: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: currentIndex,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
+        selectedItemColor: AppColors.primary,
+        unselectedItemColor: AppColors.grey,
         selectedFontSize: 13,
         unselectedFontSize: 13,
         iconSize: 26,
         elevation: 8,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white,
         selectedLabelStyle: const TextStyle(height: 1.6),
         unselectedLabelStyle: const TextStyle(height: 1.6),
         onTap: (index) {
