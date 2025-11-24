@@ -11,21 +11,52 @@ class HomeScreen extends StatelessWidget {
 
   final List<Map<String, dynamic>> products = [
     {
-      'name': 'Product Name',
-      'price': 'UGX 6000',
+      'name': 'Wireless Headphones',
+      'price': 'UGX 85,000',
       'rating': 4.5,
       'discount': '-20%',
-      'image': Icons.image, // placeholder for image
-      'description':
-          'This is a high-quality product that meets all your needs.',
+      'image': 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop',
+      'description': 'Premium wireless headphones with noise cancellation and superior sound quality.',
     },
     {
-      'name': 'Product Name',
-      'price': 'UGX 6000',
-      'rating': 4.5,
-      'discount': '-20%',
-      'image': Icons.image,
-      'description': 'Another amazing product with great value for money.',
+      'name': 'Smart Watch',
+      'price': 'UGX 120,000',
+      'rating': 4.8,
+      'discount': '-15%',
+      'image': 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop',
+      'description': 'Advanced smartwatch with fitness tracking and health monitoring features.',
+    },
+    {
+      'name': 'Running Shoes',
+      'price': 'UGX 95,000',
+      'rating': 4.3,
+      'discount': '-25%',
+      'image': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
+      'description': 'Comfortable running shoes with excellent cushioning and breathable material.',
+    },
+    {
+      'name': 'Casual T-Shirt',
+      'price': 'UGX 35,000',
+      'rating': 4.2,
+      'discount': '-30%',
+      'image': 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
+      'description': 'Soft cotton t-shirt perfect for casual wear and everyday comfort.',
+    },
+    {
+      'name': 'Laptop Backpack',
+      'price': 'UGX 65,000',
+      'rating': 4.6,
+      'discount': '-10%',
+      'image': 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop',
+      'description': 'Durable laptop backpack with multiple compartments and water-resistant material.',
+    },
+    {
+      'name': 'Bluetooth Speaker',
+      'price': 'UGX 45,000',
+      'rating': 4.4,
+      'discount': '-35%',
+      'image': 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=400&fit=crop',
+      'description': 'Portable Bluetooth speaker with rich bass and long battery life.',
     },
   ];
 
@@ -107,12 +138,31 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CircleAvatar(
-                          radius: 20,
-                          backgroundColor: Colors.grey[200],
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                Colors.blue.shade400,
+                                Colors.blue.shade600,
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.blue.withOpacity(0.3),
+                                blurRadius: 8,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
+                          ),
                           child: Icon(
                             categories[index]['icon'],
-                            color: Colors.black,
+                            color: Colors.white,
+                            size: 20,
                           ),
                         ),
                         const SizedBox(height: 8),
@@ -121,6 +171,7 @@ class HomeScreen extends StatelessWidget {
                           style: const TextStyle(
                             fontSize: 12,
                             color: Colors.black87,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ],
@@ -135,11 +186,72 @@ class HomeScreen extends StatelessWidget {
             Container(
               height: 150,
               decoration: BoxDecoration(
-                color: Colors.grey[300],
                 borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 8,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
               ),
-              child: const Center(
-                child: Icon(Icons.image, size: 50, color: Colors.grey),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Stack(
+                  children: [
+                    Image.network(
+                      'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=300&fit=crop',
+                      width: double.infinity,
+                      height: 150,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          color: Colors.grey[300],
+                          child: const Center(
+                            child: Icon(Icons.image, size: 50, color: Colors.grey),
+                          ),
+                        );
+                      },
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                            Colors.black.withOpacity(0.6),
+                            Colors.transparent,
+                          ],
+                        ),
+                      ),
+                    ),
+                    const Positioned(
+                      left: 20,
+                      top: 20,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Special Offer',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            'Up to 50% OFF',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 20),
@@ -182,9 +294,13 @@ class HomeScreen extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(12),
                       boxShadow: [
-                        BoxShadow(color: Colors.grey.shade300, blurRadius: 4),
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.08),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                        ),
                       ],
                     ),
                     child: Column(
@@ -194,18 +310,37 @@ class HomeScreen extends StatelessWidget {
                           children: [
                             Container(
                               height: 90,
+                              width: double.infinity,
                               decoration: BoxDecoration(
                                 borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(10),
-                                  topRight: Radius.circular(10),
+                                  topLeft: Radius.circular(12),
+                                  topRight: Radius.circular(12),
                                 ),
                                 color: Colors.grey[300],
                               ),
-                              child: const Center(
-                                child: Icon(
-                                  Icons.image,
-                                  size: 40,
-                                  color: Colors.grey,
+                              child: ClipRRect(
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(12),
+                                  topRight: Radius.circular(12),
+                                ),
+                                child: Image.network(
+                                  product['image'],
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return const Center(
+                                      child: Icon(
+                                        Icons.image,
+                                        size: 40,
+                                        color: Colors.grey,
+                                      ),
+                                    );
+                                  },
+                                  loadingBuilder: (context, child, loadingProgress) {
+                                    if (loadingProgress == null) return child;
+                                    return const Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  },
                                 ),
                               ),
                             ),
@@ -310,11 +445,38 @@ class ProductDetailsScreen extends StatelessWidget {
               height: 200,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.grey[300],
                 borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 8,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
               ),
-              child: const Center(
-                child: Icon(Icons.image, size: 80, color: Colors.grey),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.network(
+                  product['image'],
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      color: Colors.grey[300],
+                      child: const Center(
+                        child: Icon(Icons.image, size: 80, color: Colors.grey),
+                      ),
+                    );
+                  },
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return Container(
+                      color: Colors.grey[200],
+                      child: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
             const SizedBox(height: 20),
