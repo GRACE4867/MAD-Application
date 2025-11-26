@@ -223,13 +223,12 @@ class _WishlistScreenState extends State<WishlistScreen> {
           ),
           
           // Product Details Section
-          Expanded(
-            flex: 2,
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
                   // Product Name
                   Text(
                     item['name'],
@@ -288,7 +287,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                     ],
                   ),
                   
-                  const Spacer(),
+                  const SizedBox(height: 12),
                   
                   // Price and Add to Cart
                   Row(
@@ -323,7 +322,6 @@ class _WishlistScreenState extends State<WishlistScreen> {
                 ],
               ),
             ),
-          ),
         ],
       ),
     );
