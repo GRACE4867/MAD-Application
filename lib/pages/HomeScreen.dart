@@ -278,13 +278,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   Container(
                     margin: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: AppColors.secondary.withOpacity(0.1),
+                      color: AppColors.primary.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: IconButton(
                       icon: const Icon(
                         Icons.tune,
-                        color: AppColors.secondary,
+                        color: AppColors.primary,
                         size: 18,
                       ),
                       onPressed: () {},
@@ -315,16 +315,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   final category = categories[index];
                   final isSelected = selectedCategory == category['title'];
                   
-                  // Define colors for each category
-                  final List<Color> categoryColors = [
-                    const Color(0xFF6C63FF), // Purple for All
-                    const Color(0xFF4ECDC4), // Teal for Electronics
-                    const Color(0xFFFF6B6B), // Coral for Fashion
-                    const Color(0xFFFFE66D), // Yellow for Home
-                    const Color(0xFF95E1D3), // Mint for Sports
-                  ];
-                  
-                  final categoryColor = categoryColors[index % categoryColors.length];
+                  // Use consistent blue theme for all categories
+                  final categoryColor = AppColors.primary;
                   
                   return GestureDetector(
                     onTap: () {
@@ -638,14 +630,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                 decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                     colors: [
-                                      AppColors.secondary,
-                                      AppColors.secondary.withOpacity(0.8),
+                                      AppColors.primary,
+                                      AppColors.primary.withOpacity(0.8),
                                     ],
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: AppColors.secondary.withOpacity(0.3),
+                                      color: AppColors.primary.withOpacity(0.3),
                                       blurRadius: 4,
                                       offset: const Offset(0, 2),
                                     ),
