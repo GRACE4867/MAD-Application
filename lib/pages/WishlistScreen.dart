@@ -107,10 +107,11 @@ class _WishlistScreenState extends State<WishlistScreen> {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           // Image Section
-          Expanded(
-            flex: 3,
+          SizedBox(
+            height: 160,
             child: Stack(
               children: [
                 Container(
@@ -742,23 +743,26 @@ class _WishlistScreenState extends State<WishlistScreen> {
                     // Products List/Grid
                     Expanded(
                       child: isGridView
-                          ? LayoutBuilder(
-                              builder: (context, constraints) {
-                                final cardWidth = (constraints.maxWidth - 16) / 2;
-                                return Wrap(
-                                  spacing: 16,
-                                  runSpacing: 16,
-                                  children: wishlist.asMap().entries.map((entry) {
-                                    return SizedBox(
-                                      width: cardWidth,
-                                      height: 280,
-                                      child: _buildGridCard(entry.value, entry.key),
-                                    );
-                                  }).toList(),
-                                );
-                              },
+                          ? SingleChildScrollView(
+                              physics: const BouncingScrollPhysics(),
+                              child: LayoutBuilder(
+                                builder: (context, constraints) {
+                                  final cardWidth = (constraints.maxWidth - 16) / 2;
+                                  return Wrap(
+                                    spacing: 16,
+                                    runSpacing: 16,
+                                    children: wishlist.asMap().entries.map((entry) {
+                                      return SizedBox(
+                                        width: cardWidth,
+                                        child: _buildGridCard(entry.value, entry.key),
+                                      );
+                                    }).toList(),
+                                  );
+                                },
+                              ),
                             )
                           : ListView.builder(
+                              physics: const BouncingScrollPhysics(),
                               itemCount: wishlist.length,
                               itemBuilder: (context, index) {
                                 return _buildListCard(wishlist[index], index);

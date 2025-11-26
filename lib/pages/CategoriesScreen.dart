@@ -138,10 +138,11 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           // Image Section
-          Expanded(
-            flex: 3,
+          SizedBox(
+            height: 140,
             child: Stack(
               children: [
                 Container(
@@ -263,13 +264,12 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           ),
           
           // Category Details Section
-          Expanded(
-            flex: 2,
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
                   // Category Name
                   Text(
                     category['title'],
@@ -298,6 +298,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                   ),
                   
                   const Spacer(),
+                  
+                  const SizedBox(height: 12),
                   
                   // Product Count and Arrow
                   Row(
@@ -328,7 +330,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 ],
               ),
             ),
-          ),
         ],
       ),
     );
@@ -438,35 +439,37 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               
               // Categories Grid
               Expanded(
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    final cardWidth = (constraints.maxWidth - 16) / 2;
-                    return Wrap(
-                      spacing: 16,
-                      runSpacing: 16,
-                      children: categories.map((category) {
-                        return SizedBox(
-                          width: cardWidth,
-                          height: 220,
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => CategoryProductsScreen(
-                                    category: category,
-                                    products: allProducts.where((product) => 
-                                      product['category'] == category['title']).toList(),
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      final cardWidth = (constraints.maxWidth - 16) / 2;
+                      return Wrap(
+                        spacing: 16,
+                        runSpacing: 16,
+                        children: categories.map((category) {
+                          return SizedBox(
+                            width: cardWidth,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => CategoryProductsScreen(
+                                      category: category,
+                                      products: allProducts.where((product) => 
+                                        product['category'] == category['title']).toList(),
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
-                            child: _buildCategoryCard(category),
-                          ),
-                        );
-                      }).toList(),
-                    );
-                  },
+                                );
+                              },
+                              child: _buildCategoryCard(category),
+                            ),
+                          );
+                        }).toList(),
+                      );
+                    },
+                  ),
                 ),
               ),
             ],
@@ -509,10 +512,11 @@ class CategoryProductsScreen extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           // Image Section
-          Expanded(
-            flex: 3,
+          SizedBox(
+            height: 160,
             child: Stack(
               children: [
                 Container(
@@ -614,13 +618,12 @@ class CategoryProductsScreen extends StatelessWidget {
           ),
           
           // Product Details Section
-          Expanded(
-            flex: 2,
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
                   // Product Name
                   Text(
                     product['name'],
@@ -684,7 +687,7 @@ class CategoryProductsScreen extends StatelessWidget {
                     ],
                   ),
                   
-                  const Spacer(),
+                  const SizedBox(height: 12),
                   
                   // Price Section
                   Text(
@@ -698,7 +701,6 @@ class CategoryProductsScreen extends StatelessWidget {
                 ],
               ),
             ),
-          ),
         ],
       ),
     );
@@ -839,16 +841,17 @@ class CategoryProductsScreen extends StatelessWidget {
                           ],
                         ),
                       )
-                    : LayoutBuilder(
-                        builder: (context, constraints) {
-                          final cardWidth = (constraints.maxWidth - 16) / 2;
-                          return Wrap(
-                            spacing: 16,
-                            runSpacing: 16,
+                    : SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(),
+                        child: LayoutBuilder(
+                          builder: (context, constraints) {
+                            final cardWidth = (constraints.maxWidth - 16) / 2;
+                            return Wrap(
+                              spacing: 16,
+                              runSpacing: 16,
                             children: products.map((product) {
                               return SizedBox(
                                 width: cardWidth,
-                                height: 280,
                                 child: GestureDetector(
                                   onTap: () {
                                     // Navigate to product details
@@ -858,8 +861,9 @@ class CategoryProductsScreen extends StatelessWidget {
                                 ),
                               );
                             }).toList(),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       ),
               ),
             ],
