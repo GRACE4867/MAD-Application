@@ -106,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(70),
+        preferredSize: const Size.fromHeight(75),
         child: Container(
           decoration: BoxDecoration(
             gradient: AppColors.backgroundGradient,
@@ -118,105 +118,124 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-          child: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            title: Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    gradient: AppColors.primaryGradient,
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColors.primary.withOpacity(0.3),
-                        blurRadius: 8,
-                        offset: const Offset(0, 2),
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Row(
+                children: [
+                  // App Logo
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      gradient: AppColors.primaryGradient,
+                      borderRadius: BorderRadius.circular(14),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.primary.withOpacity(0.3),
+                          blurRadius: 8,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: const Icon(
+                      Icons.shopping_bag,
+                      color: AppColors.white,
+                      size: 22,
+                    ),
+                  ),
+                  
+                  const SizedBox(width: 16),
+                  
+                  // App Title
+                  const Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'ShopHub',
+                          style: TextStyle(
+                            color: AppColors.text,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                        SizedBox(height: 2),
+                        Text(
+                          'Your Shopping Destination',
+                          style: TextStyle(
+                            color: AppColors.secondaryText,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  
+                  // Theme Toggle Button
+                  Container(
+                    margin: const EdgeInsets.only(right: 12),
+                    decoration: BoxDecoration(
+                      color: AppColors.cards,
+                      borderRadius: BorderRadius.circular(14),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.primary.withOpacity(0.08),
+                          blurRadius: 8,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: IconButton(
+                      onPressed: () {
+                        // Toggle theme (this would need state management in a real app)
+                      },
+                      icon: Icon(
+                        Theme.of(context).brightness == Brightness.dark 
+                            ? Icons.light_mode_rounded 
+                            : Icons.dark_mode_rounded,
+                        color: AppColors.primary,
+                        size: 22,
                       ),
-                    ],
-                  ),
-                  child: const Icon(
-                    Icons.shopping_bag,
-                    color: AppColors.white,
-                    size: 20,
-                  ),
-                ),
-                const SizedBox(width: 12),
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Text(
-                      'ShopHub',
-                      style: TextStyle(
-                        color: AppColors.text,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                      padding: const EdgeInsets.all(12),
+                      constraints: const BoxConstraints(
+                        minWidth: 48,
+                        minHeight: 48,
                       ),
                     ),
-                    const Text(
-                      'Your Shopping Destination',
-                      style: TextStyle(
-                        color: AppColors.secondaryText,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
+                  ),
+                  
+                  // Notifications Button
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.cards,
+                      borderRadius: BorderRadius.circular(14),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.primary.withOpacity(0.08),
+                          blurRadius: 8,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.notifications_none_rounded,
+                        color: AppColors.primary,
+                        size: 24,
+                      ),
+                      padding: const EdgeInsets.all(12),
+                      constraints: const BoxConstraints(
+                        minWidth: 48,
+                        minHeight: 48,
                       ),
                     ),
-                  ],
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
-            actions: [
-              Container(
-                margin: const EdgeInsets.only(right: 8),
-                decoration: BoxDecoration(
-                  color: AppColors.cards,
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.primary.withOpacity(0.1),
-                      blurRadius: 6,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: IconButton(
-                  onPressed: () {
-                    // Toggle theme (this would need state management in a real app)
-                  },
-                  icon: Icon(
-                    Theme.of(context).brightness == Brightness.dark 
-                        ? Icons.light_mode 
-                        : Icons.dark_mode,
-                    color: AppColors.primary,
-                    size: 20,
-                  ),
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(right: 16),
-                decoration: BoxDecoration(
-                  color: AppColors.cards,
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.primary.withOpacity(0.1),
-                      blurRadius: 6,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.notifications_none,
-                    color: AppColors.primary,
-                    size: 22,
-                  ),
-                ),
-              ),
-            ],
           ),
         ),
       ),
