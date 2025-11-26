@@ -171,11 +171,11 @@ class _HomeScreenState extends State<HomeScreen> {
               Container(
                 margin: const EdgeInsets.only(right: 8),
                 decoration: BoxDecoration(
-                  color: AppColors.cards(context),
+                  color: AppColors.cards,
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.primary(context).withOpacity(0.1),
+                      color: AppColors.primary.withOpacity(0.1),
                       blurRadius: 6,
                       offset: const Offset(0, 2),
                     ),
@@ -189,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Theme.of(context).brightness == Brightness.dark 
                         ? Icons.light_mode 
                         : Icons.dark_mode,
-                    color: AppColors.primary(context),
+                    color: AppColors.primary,
                     size: 20,
                   ),
                 ),
@@ -197,11 +197,11 @@ class _HomeScreenState extends State<HomeScreen> {
               Container(
                 margin: const EdgeInsets.only(right: 16),
                 decoration: BoxDecoration(
-                  color: AppColors.cards(context),
+                  color: AppColors.cards,
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.primary(context).withOpacity(0.1),
+                      color: AppColors.primary.withOpacity(0.1),
                       blurRadius: 6,
                       offset: const Offset(0, 2),
                     ),
@@ -209,9 +209,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 child: IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.notifications_none,
-                    color: AppColors.primary(context),
+                    color: AppColors.primary,
                     size: 22,
                   ),
                 ),
@@ -295,25 +295,36 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const SizedBox(height: 20),
 
-            // Popular Categories
+            // Categories
             const Text(
               'Categories',
               style: TextStyle(
                 fontSize: 18, 
                 fontWeight: FontWeight.bold,
-                color: AppColors.black,
+                color: AppColors.text,
               ),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 16),
             SizedBox(
-              height: 65,
+              height: 50,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
-                separatorBuilder: (_, __) => const SizedBox(width: 8),
+                separatorBuilder: (_, __) => const SizedBox(width: 10),
                 itemBuilder: (context, index) {
                   final category = categories[index];
                   final isSelected = selectedCategory == category['title'];
+                  
+                  // Define colors for each category
+                  final List<Color> categoryColors = [
+                    const Color(0xFF6C63FF), // Purple for All
+                    const Color(0xFF4ECDC4), // Teal for Electronics
+                    const Color(0xFFFF6B6B), // Coral for Fashion
+                    const Color(0xFFFFE66D), // Yellow for Home
+                    const Color(0xFF95E1D3), // Mint for Sports
+                  ];
+                  
+                  final categoryColor = categoryColors[index % categoryColors.length];
                   
                   return GestureDetector(
                     onTap: () {
@@ -322,67 +333,65 @@ class _HomeScreenState extends State<HomeScreen> {
                       });
                     },
                     child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
-                      width: 75,
-                      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
+                      duration: const Duration(milliseconds: 250),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                       decoration: BoxDecoration(
                         gradient: isSelected 
-                            ? AppColors.primaryGradient
+                            ? LinearGradient(
+                                colors: [categoryColor, categoryColor.withOpacity(0.8)],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              )
                             : LinearGradient(
                                 colors: [
-                                  AppColors.white,
-                                  AppColors.background.withOpacity(0.8),
+                                  categoryColor.withOpacity(0.1),
+                                  categoryColor.withOpacity(0.05),
                                 ],
                               ),
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(25),
                         border: Border.all(
-                          color: isSelected ? AppColors.secondary : AppColors.lightGrey.withOpacity(0.5),
-                          width: isSelected ? 1.5 : 1,
+                          color: isSelected ? categoryColor : categoryColor.withOpacity(0.3),
+                          width: isSelected ? 2 : 1,
                         ),
-                        boxShadow: [
+                        boxShadow: isSelected ? [
                           BoxShadow(
-                            color: isSelected 
-                                ? AppColors.secondary.withOpacity(0.4)
-                                : AppColors.grey.withOpacity(0.1),
-                            blurRadius: isSelected ? 12 : 6,
-                            offset: const Offset(0, 3),
+                            color: categoryColor.withOpacity(0.4),
+                            blurRadius: 12,
+                            offset: const Offset(0, 4),
+                          ),
+                        ] : [
+                          BoxShadow(
+                            color: categoryColor.withOpacity(0.1),
+                            blurRadius: 6,
+                            offset: const Offset(0, 2),
                           ),
                         ],
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           Container(
-                            width: 28,
-                            height: 28,
+                            padding: const EdgeInsets.all(6),
                             decoration: BoxDecoration(
                               color: isSelected 
-                                  ? AppColors.white.withOpacity(0.9)
-                                  : AppColors.secondary.withOpacity(0.1),
-                              borderRadius: BorderRadius.circular(14),
-                              boxShadow: isSelected ? [
-                                BoxShadow(
-                                  color: AppColors.white.withOpacity(0.3),
-                                  blurRadius: 4,
-                                  offset: const Offset(0, 1),
-                                ),
-                              ] : null,
+                                  ? AppColors.white.withOpacity(0.2)
+                                  : categoryColor.withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(12),
                             ),
                             child: Icon(
                               category['icon'],
-                              color: isSelected ? AppColors.primary : AppColors.secondary,
+                              color: isSelected ? AppColors.white : categoryColor,
                               size: 16,
                             ),
                           ),
-                          const SizedBox(height: 6),
+                          const SizedBox(width: 8),
                           Text(
                             category['title'],
                             style: TextStyle(
-                              fontSize: 10,
-                              color: isSelected ? AppColors.white : AppColors.black.withOpacity(0.8),
+                              fontSize: 13,
+                              color: isSelected ? AppColors.white : categoryColor,
                               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
                             ),
-                            textAlign: TextAlign.center,
                           ),
                         ],
                       ),
